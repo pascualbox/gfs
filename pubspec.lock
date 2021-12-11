@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  easy_onboarding:
+    dependency: "direct main"
+    description:
+      name: easy_onboarding
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -198,6 +205,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  images_picker:
+    dependency: "direct main"
+    description:
+      name: images_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.9"
   intl:
     dependency: transitive
     description:
@@ -282,6 +296,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  scan:
+    dependency: "direct main"
+    description:
+      name: scan
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0"
   shared_preferences:
     dependency: "direct main"
     description:

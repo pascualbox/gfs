@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gfs/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Utilities/colors.dart';
@@ -202,12 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colores.textColor,
               fontFamily: 'OpenSans',
             )),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => RegisterScreen()));
-        },
+        onPressed: () {},
       ),
     );
   }
