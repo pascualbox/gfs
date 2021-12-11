@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gfs/on_board_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Utilities/colors.dart';
@@ -243,18 +243,20 @@ class _LoginScreenState extends State<LoginScreen> {
         //elevation: 5.0,
         borderRadius: const BorderRadius.all(Radius.circular(30.0)),
         color: Colores.gfsBlue,
-        onPressed: () async {
+        onPressed:
+            () /*async {
           FirebaseMessaging messaging = FirebaseMessaging.instance;
 
 // use the returned token to send messages to users from your custom server
           String? token = await messaging.getToken(
             vapidKey: "BGpdLRs......",
           );
-          print("Token: $token");
+          print("Token: $token");*/
+            {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) => LoginScreen()));
+                  builder: (BuildContext context) => OnBoardScreen()));
           //asignamos el valor que devuelve la funcion a una variable para meterla en el if
         },
         padding: EdgeInsets.all(15.0),

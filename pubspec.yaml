@@ -34,6 +34,9 @@ dependencies:
   firebase_auth: 3.3.0
   firebase_analytics: 8.3.4
   shared_preferences: 2.0.9
+  easy_onboarding: ^1.0.0
+  images_picker: ^1.2.9
+  scan: ^1.5.0
 
 
   # The following adds the Cupertino Icons font to your application.
