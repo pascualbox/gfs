@@ -34,12 +34,11 @@ class _LoginScreenState extends State<LoginScreen> {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: bgImage,
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                          Colores.bgBlueColor, BlendMode.modulate)),
-                ),
+                    image: DecorationImage(
+                        image: bgImage,
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                            Colores.bgBlueColor, BlendMode.modulate))),
               ),
               Container(
                 height: double.infinity,
@@ -60,9 +59,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           Expanded(
                             child: _buildRememberMeSwitch(),
                           ),
-                          Expanded(
-                            child: _buildForgotPasswordBtn(),
-                          ),
+                          Column(children: [
+                            _buildForgotPasswordBtn(),
+                            _buildRegisterBtn(),
+                          ]),
                         ],
                       ),
                       _buildLoginBtn(),
@@ -182,6 +182,21 @@ class _LoginScreenState extends State<LoginScreen> {
       child: CupertinoButton(
         padding: EdgeInsets.only(right: 0.0),
         child: Text('Forgot password',
+            style: TextStyle(
+              color: Colores.textColor,
+              fontFamily: 'OpenSans',
+            )),
+        onPressed: () {},
+      ),
+    );
+  }
+
+  Widget _buildRegisterBtn() {
+    return Container(
+      alignment: Alignment.centerRight,
+      child: CupertinoButton(
+        padding: EdgeInsets.only(right: 0.0),
+        child: Text('Register',
             style: TextStyle(
               color: Colores.textColor,
               fontFamily: 'OpenSans',
