@@ -52,18 +52,18 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             skipButtonColor: Colors.transparent,
             backButtonColor: Colores.gfsBlue,
             nextButtonColor: Colores.gfsBlue,
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colores.gfsBlack,
             indicatorSelectedColor: Colores.bgBlueColor,
             indicatorUnselectedColor: Colores.fgBlueColor,
             startButtonColor: Colores.gfsBlue,
-            bottomBackgroundColor: Colors.transparent,
+            bottomBackgroundColor: Colores.gfsBlack,
             nextButtonIcon: Icon(
               Icons.arrow_forward,
               color: Colors.white,
             ),
             skipButtonText: Text(
               'SKIP',
-              style: TextStyle(fontSize: 15.0, color: Colores.gfsBlue),
+              style: TextStyle(fontSize: 15.0, color: Colores.gfsGrey),
             ),
             startButtonText: Text(
               'Escanear desde imagen',
@@ -78,7 +78,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             ),
             children: [
               Container(
-                  color: Colors.white,
+                  color: Colores.gfsBlack,
                   child: Column(
                     children: [
                       Image(
@@ -90,49 +90,53 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                     ],
                   )),
               Container(
+                  color: Colores.gfsBlack,
                   child: Column(
-                children: [
-                  Image(
-                    image: new AssetImage('assets/bg.png'),
-                  ),
-                  Image(
-                    image: new AssetImage('assets/gfs.png'),
-                  ),
-                ],
-              )),
+                    children: [
+                      Image(
+                        image: new AssetImage('assets/bg.png'),
+                      ),
+                      Image(
+                        image: new AssetImage('assets/gfs.png'),
+                      ),
+                    ],
+                  )),
               Container(
+                  color: Colores.gfsBlack,
                   child: Column(
-                children: [
-                  Image(
-                    image: new AssetImage('assets/bg.png'),
-                  ),
-                  Image(
-                    image: new AssetImage('assets/gfs.png'),
-                  ),
-                ],
-              )),
+                    children: [
+                      Image(
+                        image: new AssetImage('assets/bg.png'),
+                      ),
+                      Image(
+                        image: new AssetImage('assets/gfs.png'),
+                      ),
+                    ],
+                  )),
               Container(
+                  color: Colores.gfsBlack,
                   child: Column(
-                children: [
-                  Image(
-                    image: new AssetImage('assets/bg.png'),
-                  ),
-                  Image(
-                    image: new AssetImage('assets/gfs.png'),
-                  ),
-                ],
-              )),
+                    children: [
+                      Image(
+                        image: new AssetImage('assets/bg.png'),
+                      ),
+                      Image(
+                        image: new AssetImage('assets/gfs.png'),
+                      ),
+                    ],
+                  )),
               Container(
+                  color: Colores.gfsBlack,
                   child: Column(
-                children: [
-                  Image(
-                    image: new AssetImage('assets/bg.png'),
-                  ),
-                  Image(
-                    image: new AssetImage('assets/gfs.png'),
-                  ),
-                ],
-              )),
+                    children: [
+                      Image(
+                        image: new AssetImage('assets/bg.png'),
+                      ),
+                      Image(
+                        image: new AssetImage('assets/gfs.png'),
+                      ),
+                    ],
+                  )),
               Container(
                 child: Column(
                   children: [
@@ -159,7 +163,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               title: Text("Select the image where you have the QR codes"),
               actions: <Widget>[
                 TextButton(
-                    child: Text("Aceptar"),
+                    child: Text("Accept"),
                     onPressed: () async {
                       List<Media>? res = await ImagesPicker.pick();
                       if (res != null) {
@@ -179,7 +183,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                       }
                     }),
                 TextButton(
-                  child: Text('Cancelar'),
+                  child: Text('Cancel'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },

@@ -1,11 +1,10 @@
 import 'dart:ui';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gfs/on_board_screen.dart';
 
 import 'Utilities/colors.dart';
 import 'login_screen.dart';
@@ -15,14 +14,12 @@ class RegisterScreen extends StatefulWidget {
   _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen>{
+class _RegisterScreenState extends State<RegisterScreen> {
   String usuario = "";
   String pass = "";
   String textError = "";
   final _usercontroller = new TextEditingController();
   final _passwordcontroller = new TextEditingController();
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -69,25 +66,6 @@ class _RegisterScreenState extends State<RegisterScreen>{
       ),
     );
   }
-  Widget _buildRegisterBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: CupertinoButton(
-        padding: EdgeInsets.only(right: 0.0),
-        child: Text('Register',
-            style: TextStyle(
-              color: Colores.textColor,
-              fontFamily: 'OpenSans',
-            )),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => LoginScreen()));
-        },
-      ),
-    );
-  }
 
   Widget _buildUserTF() {
     return Column(
@@ -130,6 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen>{
       ],
     );
   }
+
   Widget _buildPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,6 +148,49 @@ class _RegisterScreenState extends State<RegisterScreen>{
       ],
     );
   }
+
+  Widget _buildRegisterBtn() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25.0),
+      width: double.infinity,
+      child: CupertinoButton(
+        //elevation: 5.0,
+        borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+        color: Colores.gfsBlue,
+        onPressed:
+            () /*async {
+          FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+// use the returned token to send messages to users from your custom server
+          String? token = await messaging.getToken(
+            vapidKey: "BGpdLRs......",
+          );
+          print("Token: $token");*/
+            {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => OnBoardScreen()));
+          //asignamos el valor que devuelve la funcion a una variable para meterla en el if
+        },
+        padding: EdgeInsets.all(15.0),
+        /*shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),*/
+        child: Text(
+          'Register',
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildPasswordTwiceTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,6 +230,4 @@ class _RegisterScreenState extends State<RegisterScreen>{
       ],
     );
   }
-
-  }
-
+}
