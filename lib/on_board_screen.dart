@@ -81,21 +81,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   color: Colores.gfsBlack,
                   child: Column(
                     children: [
-                      Image(
-                        image: new AssetImage('assets/bg.png'),
-                      ),
-                      Image(
-                        image: new AssetImage('assets/gfs.png'),
-                      ),
-                    ],
-                  )),
-              Container(
-                  color: Colores.gfsBlack,
-                  child: Column(
-                    children: [
-                      Image(
-                        image: new AssetImage('assets/bg.png'),
-                      ),
+                      Text(
+                          "Here we would have the instructions for the client to get the QR code"),
                       Image(
                         image: new AssetImage('assets/gfs.png'),
                       ),
@@ -105,21 +92,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   color: Colores.gfsBlack,
                   child: Column(
                     children: [
-                      Image(
-                        image: new AssetImage('assets/bg.png'),
-                      ),
-                      Image(
-                        image: new AssetImage('assets/gfs.png'),
-                      ),
-                    ],
-                  )),
-              Container(
-                  color: Colores.gfsBlack,
-                  child: Column(
-                    children: [
-                      Image(
-                        image: new AssetImage('assets/bg.png'),
-                      ),
+                      Text(
+                          "Here we would have the instructions for the client to get the QR code"),
                       Image(
                         image: new AssetImage('assets/gfs.png'),
                       ),
@@ -129,9 +103,30 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   color: Colores.gfsBlack,
                   child: Column(
                     children: [
+                      Text(
+                          "Here we would have the instructions for the client to get the QR code"),
                       Image(
-                        image: new AssetImage('assets/bg.png'),
+                        image: new AssetImage('assets/gfs.png'),
                       ),
+                    ],
+                  )),
+              Container(
+                  color: Colores.gfsBlack,
+                  child: Column(
+                    children: [
+                      Text(
+                          "Here we would have the instructions for the client to get the QR code"),
+                      Image(
+                        image: new AssetImage('assets/gfs.png'),
+                      ),
+                    ],
+                  )),
+              Container(
+                  color: Colores.gfsBlack,
+                  child: Column(
+                    children: [
+                      Text(
+                          "Here we would have the instructions for the client to get the QR code"),
                       Image(
                         image: new AssetImage('assets/gfs.png'),
                       ),
@@ -209,7 +204,6 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 context,
                 MaterialPageRoute(
                     builder: (BuildContext context) => LoginScreen()));
-            ;
           });
         },
       ),
