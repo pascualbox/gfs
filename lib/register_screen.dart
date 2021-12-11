@@ -5,27 +5,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gfs/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Utilities/colors.dart';
+import 'login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen>{
   String usuario = "";
   String pass = "";
-  bool checkboxstate = false;
-  String textoerror = "";
+  String textError = "";
   final _usercontroller = new TextEditingController();
   final _passwordcontroller = new TextEditingController();
+
+
 
   @override
   Widget build(BuildContext context) {
     AssetImage bgImage = new AssetImage('assets/bg.png');
+
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -55,18 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ImagenLogo(),
                       _buildUserTF(),
                       _buildPasswordTF(),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: _buildRememberMeSwitch(),
-                          ),
-                          Column(children: [
-                            _buildForgotPasswordBtn(),
-                            _buildRegisterBtn(),
-                          ]),
-                        ],
-                      ),
-                      _buildLoginBtn(),
+                      _buildPasswordTwiceTF(),
+                      _buildRegisterBtn(),
                     ],
                   ),
                 ),
@@ -77,22 +69,24 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
-  cargarDatos() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    //checkboxstate == prefs.getBool('estado');
-    usuario = prefs.getString('user')!;
-    pass = prefs.getString('password')!;
-    if (usuario == null && pass == null) {
-      _usercontroller.text = '';
-      _passwordcontroller.text = '';
-      //checkboxstate == false;
-    } else if (usuario != null && pass != null) {
-      _usercontroller.text = usuario.toString();
-      _passwordcontroller.text = pass.toString();
-      //checkboxstate == true;
-    }
-    setState(() {});
+  Widget _buildRegisterBtn() {
+    return Container(
+      alignment: Alignment.centerRight,
+      child: CupertinoButton(
+        padding: EdgeInsets.only(right: 0.0),
+        child: Text('Register',
+            style: TextStyle(
+              color: Colores.textColor,
+              fontFamily: 'OpenSans',
+            )),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => LoginScreen()));
+        },
+      ),
+    );
   }
 
   Widget _buildUserTF() {
@@ -136,7 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ],
     );
   }
-
   Widget _buildPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,123 +169,45 @@ class _LoginScreenState extends State<LoginScreen> {
       ],
     );
   }
-
-  Widget _buildForgotPasswordBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: CupertinoButton(
-        padding: EdgeInsets.only(right: 0.0),
-        child: Text('Forgot password',
-            style: TextStyle(
-              color: Colores.textColor,
-              fontFamily: 'OpenSans',
-            )),
-        onPressed: () {},
-      ),
-    );
-  }
-
-  Widget _buildRegisterBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: CupertinoButton(
-        padding: EdgeInsets.only(right: 0.0),
-        child: Text('Register',
-            style: TextStyle(
-              color: Colores.textColor,
-              fontFamily: 'OpenSans',
-            )),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => RegisterScreen()));
-        },
-      ),
-    );
-  }
-
-  Widget _buildRememberMeSwitch() {
-    return Container(
-      height: 20.0,
-      alignment: Alignment.centerLeft,
-      child: Row(
-        children: <Widget>[
-          Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
-            child: CupertinoSwitch(
-              value: checkboxstate,
-              trackColor: Colores.gfsGrey,
-              activeColor: Colores.gfsBlue,
-              onChanged: (value) {
-                setState(() {
-                  checkboxstate = value;
-                });
-              },
-            ),
-          ),
-          Text('Remember me',
-              style: TextStyle(
-                color: Colores.textColor,
-                fontFamily: 'OpenSans',
-              )),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLoginBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
-      width: double.infinity,
-      child: CupertinoButton(
-        //elevation: 5.0,
-        borderRadius: const BorderRadius.all(Radius.circular(30.0)),
-        color: Colores.gfsBlue,
-        onPressed: () async {
-          FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-// use the returned token to send messages to users from your custom server
-          String? token = await messaging.getToken(
-            vapidKey: "BGpdLRs......",
-          );
-          print("Token: $token");
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => LoginScreen()));
-          //asignamos el valor que devuelve la funcion a una variable para meterla en el if
-        },
-        padding: EdgeInsets.all(15.0),
-        /*shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),*/
-        child: Text(
-          'Log in',
+  Widget _buildPasswordTwiceTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Repeat your password',
           style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
+            color: Colores.labelColor,
             fontFamily: 'OpenSans',
           ),
         ),
-      ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          height: 60.0,
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(
+              color: Colores.textColor,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colores.iconColor,
+              ),
+              hintText: 'Repeat your password',
+              hintStyle: TextStyle(
+                color: Colores.hintColor,
+                fontFamily: 'OpenSans',
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
-}
 
-class ImagenLogo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage foto = new AssetImage('assets/gfs.png');
-    Image imagen = Image(
-      image: foto,
-      fit: BoxFit.contain,
-    );
-    return Container(
-        child: imagen,
-        height: MediaQuery.of(context).size.height * 0.2,
-        width: MediaQuery.of(context).size.width);
   }
-}
+
