@@ -157,16 +157,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         //elevation: 5.0,
         borderRadius: const BorderRadius.all(Radius.circular(30.0)),
         color: Colores.gfsBlue,
-        onPressed:
-            () /*async {
-          FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-// use the returned token to send messages to users from your custom server
-          String? token = await messaging.getToken(
-            vapidKey: "BGpdLRs......",
-          );
-          print("Token: $token");*/
-            {
+        onPressed: () {
           Navigator.push(
               context,
               MaterialPageRoute(
